@@ -9,7 +9,7 @@ if(isset($_POST['save'])){
     $sc->setName($_POST['name']);
     $sc->setPrice($_POST['price']);
     $sc->setProductType($_POST['product_type']);
-    $sc->setTypeValue($_POST['size']);
+    $sc->setTypeValue($_POST['type_value']);
     $sc->insertData(); 
 }
 ?>
@@ -61,7 +61,7 @@ if(isset($_POST['save'])){
             </div>
   
             <label style = "margin-top: 20px; margin-bottom: 20px">Type Switcher</label>
-            <select id="productType" name="product_type" required class="form-select" aria-label="Default select example">
+            <select id="productType" name="product_type" required class="form-select" aria-label="Default select example" required>
                 <option hidden disabled selected>Type Switcher</option>
                 <option value="DVD">DVD</option>
                 <option value="Book">Book</option>
@@ -70,23 +70,24 @@ if(isset($_POST['save'])){
             
             <div id="dvd-div" style="display: none;">
                 <label> Size (MB) </label>
-                <input id="size" type="number" class="form-control"  name="size">
-            </div>
-
-            <div id="books-div" style="display: none;">
-                <label> Height (CM) </label>
-                <input id="height" type="number" class="form-control"  name="height">
-                <label> width (CM) </label>
-                <input id="width" type="number" class="form-control"  name="width">
-                <label> Lenght (CM) </label>
-                <input id="lenght" type="number" class="form-control"  name="lenght">
+                <input id="size" onkeydown="dvdChange()" onkeyup="dvdChange()" type="number" class="form-control"  name="size">
             </div>
 
             <div id="furniture-div" style="display: none;">
-                <label> Weight (KG) </label>
-                <input id="weight" type="number" class="form-control"  name="weight">
+                <label> Height (CM) </label>
+                <input id="height" onkeydown="furnChange()" onkeyup="furnChange()" type="number" class="form-control"  name="height">
+                <label> width (CM) </label>
+                <input id="width" onkeydown="furnChange()" onkeyup="furnChange()" type="number" class="form-control"  name="width">
+                <label> Lenght (CM) </label>
+                <input id="lenght" onkeydown="furnChange()" onkeyup="furnChange()" type="number" class="form-control"  name="lenght">
             </div>
 
+            <div id="books-div" style="display: none;">
+                <label> Weight (KG) </label>
+                <input id="weight" onkeydown="bookChange()" onkeyup="bookChange()" type="number" class="form-control"  name="weight">
+            </div>
+
+            <input id="type_value_input" type="hidden" name="type_value">
     
         </form>
 
@@ -103,6 +104,12 @@ if(isset($_POST['save'])){
     </div>
 
     <script>
+        var valueInput = document.getElementById("type_value_input");
+        var dvdInput = document.getElementById("size");
+        var F1Input = document.getElementById("height");
+        var F2Input = document.getElementById("width");
+        var F3Input = document.getElementById("lenght");
+        var bookInput = document.getElementById("weight");
 
         $('select').on('change', function() {
             document.getElementById("dvd-div").style.display = "block";
@@ -113,26 +120,57 @@ if(isset($_POST['save'])){
             var e = document.getElementById("productType");
             var text = e.options[e.selectedIndex].text;
 
+
             switch (text){
                 case "DVD":
                     document.getElementById("dvd-div").style.display = "block";
                     document.getElementById("books-div").style.display = "none";
                     document.getElementById("furniture-div").style.display = "none";
+                    F1Input.value = "";
+                    F2Input.value = "";
+                    F3Input.value = "";
+                    bookInput.value = "";
+                    valueInput.value = "";
                     break;
 
                 case "Book":
                     document.getElementById("dvd-div").style.display = "none";
                     document.getElementById("books-div").style.display = "block";
                     document.getElementById("furniture-div").style.display = "none";
+                    F1Input.value = "";
+                    F2Input.value = "";
+                    F3Input.value = "";
+                    dvdInput.value = "";
+                    valueInput.value = "";
                     break;
 
                 case "Furniture":
                     document.getElementById("dvd-div").style.display = "none";
                     document.getElementById("books-div").style.display = "none";
                     document.getElementById("furniture-div").style.display = "block";
+                    dvdInput.value = "";
+                    bookInput.value = "";
+                    valueInput.value = "";
                     break;
             }
+            
+            
         });
+        function dvdChange(){
+            valueInput.value = "Size:" + dvdInput.value + "MB";
+
+        }
+
+        function furnChange(){
+            valueInput.value = "Dimension:" + F1Input.value + "x" + F2Input.value + "x" + F3Input.value;
+
+        }
+
+        function bookChange(){
+            valueInput.value = "Weight:" + bookInput.value + "KG";
+
+        }
+
     </script>
 </body>
 

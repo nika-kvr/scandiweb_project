@@ -44,7 +44,7 @@ $all = $data->fetchAll();
     foreach($all as $key => $val){
     ?>
 
-    <div class="card" style="display: flex;align-items: flex-start; width: 200px; height: 150px; margin: 20px; border-width: bold;flex-direction: row;">
+    <div class="card" style="display: flex;align-items: flex-start; width: 250px; height: 170px; margin: 20px; border-width: bold;flex-direction: row;">
     
       <input style = "margin: 20px" class="delete-checkbox" type="checkbox"
       name="prod_delete_id[]" value="<?= $val['id']; ?>" >
@@ -70,9 +70,6 @@ $all = $data->fetchAll();
       </h6>
 
       <h6 class="card-title">        
-        <?php 
-        echo $val ['product_type'];
-        ?> 
         <?php 
         echo $val ['type_value'];
         ?> 
