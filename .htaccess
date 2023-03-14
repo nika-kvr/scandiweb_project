@@ -1,5 +1,0 @@
-RewriteEngine On 
-
-RewriteRule ^add-product?$ productAdd.php
-
-RewriteRule ^/?$ view.php

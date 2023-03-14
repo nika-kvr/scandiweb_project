@@ -87,7 +87,7 @@ public function insertData(){
     try{
         $stm = $this->dbCnx->prepare("INSERT INTO products(SKU,name,price,product_type,type_value) values(?,?,?,?,?)");
         $stm->execute([$this->SKU, $this->name, $this->price,$this->product_type,$this->type_value]);
-        header("Location: /scandiweb_proj");
+        header("Location: index.php");
     }
     catch(Exception $e){
         return $e->getMessage();

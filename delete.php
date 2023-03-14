@@ -9,7 +9,7 @@ if(isset($_POST['products_delete_btn'])){
     $extract_id = implode(',', $all_id);
 
     $record->delete($extract_id);
-    header("Location: /scandiweb_proj");
+    header("Location: index.php");
 
 }
 

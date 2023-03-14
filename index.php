@@ -14,7 +14,7 @@ $all = $data->fetchAll();
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>List</title>
   </head>
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
 
@@ -30,7 +30,7 @@ $all = $data->fetchAll();
     
     <div>
       
-    <button style="margin-right: 10px" onclick="location.href = 'add-product';" type="button" class="btn btn-primary">ADD</button>
+    <button style="margin-right: 10px" onclick="location.href = 'productAdd.php';" type="button" class="btn btn-primary">ADD</button>
     <button  name="products_delete_btn" id="delete-product-btn" type="submit" class="btn btn-danger">MASS DELETE</button>
     </div>
     
@@ -67,6 +67,7 @@ $all = $data->fetchAll();
         <?php 
         echo $val ['price'];
         ?> 
+        $
       </h6>
 
       <h6 class="card-title">        

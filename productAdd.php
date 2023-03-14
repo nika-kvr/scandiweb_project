@@ -42,7 +42,7 @@ if(isset($_POST['save'])){
             </div>
             <div>
                 <button  id="submitbtn" type="submit" class="btn btn-primary" name="save" style="margin-right: 10px">Save</button>
-                <button onclick="location.href = '../scandiweb_proj';" type="button" class="btn btn-secondary">Cancel</button>
+                <button onclick="location.href = 'index.php';" type="button" class="btn btn-secondary">Cancel</button>
                 </div>
             </div>
 
